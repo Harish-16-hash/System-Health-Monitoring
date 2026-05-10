@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objectives - ML System Health</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div class="logo">
+                <i class="ph-fill ph-heartbeat"></i>
+                <h1>System Health Monitoring</h1>
+            </div>
+            <nav>
+                <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('about') }}" class="nav-link">About</a>
+                <a href="{{ url_for('objectives') }}" class="nav-link active">Objectives</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <div class="about-panel glass-panel">
+                <div class="about-header">
+                    <h2>Project Objectives</h2>
+                    <p class="subtitle">Goals of the ML-Based System Health Monitoring</p>
+                </div>
+
+                <div class="about-content">
+                    <section class="objectives-section">
+                        <div class="objective-cards">
+                            <div class="obj-card">
+                                <i class="ph ph-warning-circle"></i>
+                                <h4>Detect Failures Early</h4>
+                                <p>Identify anomalous behavior before it causes system downtime or critical data loss.</p>
+                            </div>
+                            <div class="obj-card">
+                                <i class="ph ph-chart-line-up"></i>
+                                <h4>Predict Resource Usage</h4>
+                                <p>Forecast potential bottlenecks in system resources to allow proactive scaling.</p>
+                            </div>
+                            <div class="obj-card">
+                                <i class="ph ph-rocket-launch"></i>
+                                <h4>Improve Performance</h4>
+                                <p>Enable proactive maintenance to maintain optimal operation and efficiency.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="form-actions" style="margin-top: 3rem;">
+                    <a href="{{ url_for('home') }}" class="btn btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Back to Dashboard
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

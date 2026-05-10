@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div class="logo">
+                <i class="ph-fill ph-heartbeat"></i>
+                <h1>System Health Monitoring</h1>
+            </div>
+            <nav>
+                <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('about') }}" class="nav-link">About</a>
+                <a href="{{ url_for('objectives') }}" class="nav-link">Objectives</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <div class="result-panel glass-panel">
+                <h2>Prediction Result</h2>
+                
+                <div class="status-card {{ status_class }}">
+                    <div class="status-icon">
+                        {% if status_class == 'healthy' %}
+                            <i class="ph-fill ph-check-circle"></i>
+                        {% elif status_class == 'warning' %}
+                            <i class="ph-fill ph-warning-circle"></i>
+                        {% elif status_class == 'critical' %}
+                            <i class="ph-fill ph-x-circle"></i>
+                        {% else %}
+                            <i class="ph-fill ph-question"></i>
+                        {% endif %}
+                    </div>
+                    <div class="status-details">
+                        <h3>{{ status_text }}</h3>
+                        <p>Based on the provided system metrics.</p>
+                    </div>
+                </div>
+
+                {% if cpu is defined %}
+                <div class="result-metrics">
+                    <h4>Input Metrics Analyzed</h4>
+                    <div class="metrics-grid">
+                        <div class="r-metric">
+                            <span class="rm-label">CPU Usage</span>
+                            <span class="rm-value">{{ cpu }}%</span>
+                        </div>
+                        <div class="r-metric">
+                            <span class="rm-label">Memory Usage</span>
+                            <span class="rm-value">{{ memory }}%</span>
+                        </div>
+                        <div class="r-metric">
+                            <span class="rm-label">Disk Usage</span>
+                            <span class="rm-value">{{ disk }}%</span>
+                        </div>
+                        <div class="r-metric">
+                            <span class="rm-label">DB Load</span>
+                            <span class="rm-value">{{ db_load }}%</span>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="form-actions" style="margin-top: 2rem;">
+                    <a href="{{ url_for('home') }}" class="btn btn-primary">
+                        <i class="ph ph-arrow-counter-clockwise"></i> Check Again
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

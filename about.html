@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - ML System Health</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div class="logo">
+                <i class="ph-fill ph-heartbeat"></i>
+                <h1>System Health Monitoring</h1>
+            </div>
+            <nav>
+                <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('about') }}" class="nav-link active">About</a>
+                <a href="{{ url_for('objectives') }}" class="nav-link">Objectives</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <div class="about-panel glass-panel">
+                <div class="about-header">
+                    <h2>About This Project</h2>
+                    <p class="subtitle">ML-Based System Health Monitoring Using OS Data, DBMS, and Algorithm Analysis</p>
+                </div>
+
+                <div class="about-content">
+                    <section class="purpose-section">
+                        <h3><i class="ph ph-info"></i> Project Purpose</h3>
+                        <p>This project uses Machine Learning to predict and monitor system health. By analyzing critical resource utilization, the system can determine the overall health state and classify it as Healthy, Warning, or Critical.</p>
+                        <p>The model analyzes the following key metrics:</p>
+                        <ul class="feature-list">
+                            <li><i class="ph ph-cpu"></i> <strong>CPU usage:</strong> Processor load and performance metrics</li>
+                            <li><i class="ph ph-memory"></i> <strong>Memory usage:</strong> RAM utilization and availability</li>
+                            <li><i class="ph ph-hard-drives"></i> <strong>Disk usage:</strong> Storage space and I/O load</li>
+                            <li><i class="ph ph-database"></i> <strong>DBMS load:</strong> Database queries and transaction volume</li>
+                        </ul>
+                    </section>
+
+                </div>
+
+                <div class="form-actions" style="margin-top: 2rem;">
+                    <a href="{{ url_for('home') }}" class="btn btn-secondary">
+                        <i class="ph ph-arrow-left"></i> Back to Dashboard
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

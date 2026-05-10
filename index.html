@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML-Based System Health Monitoring</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div class="logo">
+                <i class="ph-fill ph-heartbeat"></i>
+                <h1>System Health Monitoring</h1>
+            </div>
+            <nav>
+                <a href="{{ url_for('home') }}" class="nav-link active">Home</a>
+                <a href="{{ url_for('about') }}" class="nav-link">About</a>
+                <a href="{{ url_for('objectives') }}" class="nav-link">Objectives</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <div class="hero-section">
+                <h2>Predict System Status using ML</h2>
+                <p>Analyze OS Data, DBMS, and Algorithms to detect failures early and optimize performance.</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Metrics Display -->
+                <div class="metrics-panel">
+                    <h3><i class="ph ph-gauge"></i> Real-time Metrics</h3>
+                    <div class="metrics-cards">
+                        <div class="metric-card">
+                            <i class="ph ph-cpu metric-icon cpu"></i>
+                            <div class="metric-info">
+                                <span class="metric-label">CPU Usage</span>
+                                <span class="metric-value" id="disp-cpu">--%</span>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <i class="ph ph-memory metric-icon memory"></i>
+                            <div class="metric-info">
+                                <span class="metric-label">Memory</span>
+                                <span class="metric-value" id="disp-memory">--%</span>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <i class="ph ph-hard-drives metric-icon disk"></i>
+                            <div class="metric-info">
+                                <span class="metric-label">Disk Usage</span>
+                                <span class="metric-value" id="disp-disk">--%</span>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <i class="ph ph-database metric-icon db"></i>
+                            <div class="metric-info">
+                                <span class="metric-label">DB Load</span>
+                                <span class="metric-value" id="disp-db">--%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Form -->
+                <div class="form-panel glass-panel">
+                    <h3><i class="ph ph-sliders"></i> Input Parameters</h3>
+                    <form action="{{ url_for('predict') }}" method="POST" id="predict-form">
+                        <div class="form-group">
+                            <label for="cpu">CPU Usage (%)</label>
+                            <div class="input-wrapper">
+                                <i class="ph ph-cpu"></i>
+                                <input type="number" id="cpu" name="cpu" min="0" max="100" step="0.1" required placeholder="E.g. 45.5">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="memory">Memory Usage (%)</label>
+                            <div class="input-wrapper">
+                                <i class="ph ph-memory"></i>
+                                <input type="number" id="memory" name="memory" min="0" max="100" step="0.1" required placeholder="E.g. 60.2">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="disk">Disk Usage (%)</label>
+                            <div class="input-wrapper">
+                                <i class="ph ph-hard-drives"></i>
+                                <input type="number" id="disk" name="disk" min="0" max="100" step="0.1" required placeholder="E.g. 80.0">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="db_load">DB Load (%)</label>
+                            <div class="input-wrapper">
+                                <i class="ph ph-database"></i>
+                                <input type="number" id="db_load" name="db_load" min="0" max="100" step="0.1" required placeholder="E.g. 30.5">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="ph ph-magic-wand"></i> Predict Health
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
